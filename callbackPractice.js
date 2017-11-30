@@ -90,17 +90,14 @@ if(result === true){
 
 //Code Here
 var uniq = ( arr, callback ) => {
-  let arr1 = arr;
-  let arr2 = arr;
-  let newArray = [];
-  for ( let i = 0; i < arr1.length; i++ ) {
-    for ( let j = 0; j < arr1.length; j++ ) {
-      if ( arr1[i] !== arr1[j]) {
-        arr2.splice( i, 1);
+  for ( let i = arr.length - 1; i >= 0; i-- ) {
+    for ( let j = i - 1; j >= 0; j-- ) {
+      if ( arr[i] === arr[j] ) {
+        arr.splice(i, 1);
       }
     }
   }
-  callback( newArray );
+  callback( arr );
 }
 
 uniq(names, function(uniqArr){
